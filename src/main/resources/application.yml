@@ -1,0 +1,7 @@
+spring:
+  webflux:
+    base-path: /minos
+  application:
+    name: minos
+server:
+  port: 8081
