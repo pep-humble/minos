@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * @author gang.liu
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.pep")
 public class MinosApplication {
 
     /**
