@@ -1,17 +1,42 @@
+server:
+  port: 8881
+  servlet:
+    context-path: /minos
 spring:
   main:
     banner-mode: off
   application:
     name: minos
-server:
-  port: 8881
-  servlet:
-    context-path: /minos
-
+  datasource:
+    url: jdbc:mysql://localhost:3306
+    hikari:
+      catalog: minos
+      username: root
+      password: '!@Wasd135139'
+      # 初始化连接时,测试连接sql
+      connection-init-sql: select 1
+      # 连接测试sql
+      connection-test-query: select 1
+      # 最小闲置连接数
+      minimum-idle: 8
+      # 最多连接数
+      maximum-pool-size: 24
+      # 长连接时长
+      keepalive-time: 10000
+      data-source-properties:
+        useUnicode: true
+        characterEncoding: UTF-8
+        useSSL: false
+        serverTimezone: UTC
+        allowMultiQueries: true
+        autoReconnect: true
 business:
   exception:
-    response-real-exceptions: false
-
+    response-real-exceptions: true
+logging:
+  level:
+    com.pep: debug
+    root: info
 # springdoc-openapi项目配置
 springdoc:
   group-configs:
