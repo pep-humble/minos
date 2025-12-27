@@ -11,6 +11,7 @@ import java.io.Serializable;
 
 /**
  * 业务异常
+ *
  * @author liu.gang
  */
 @Data

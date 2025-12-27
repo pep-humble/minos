@@ -23,9 +23,10 @@ import java.util.stream.Collectors;
 
 /**
  * 异常映射器
- * @author liu.gang
- * @param messageSource 国际化消息
+ *
+ * @param messageSource       国际化消息
  * @param exceptionProperties 异常配置
+ * @author liu.gang
  */
 @Slf4j
 public record ExceptionMapper(MessageSource messageSource, ExceptionProperties exceptionProperties) {

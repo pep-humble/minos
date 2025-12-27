@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * openapi配置
+ *
  * @author liu.gang
  */
 @Configuration
@@ -15,6 +16,7 @@ public class OpenApiConfiguration {
 
     /**
      * openApi客制化配置
+     *
      * @return openApi客制化配置
      */
     @Bean

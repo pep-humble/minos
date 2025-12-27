@@ -27,7 +27,8 @@ spring:
         useUnicode: true
         characterEncoding: UTF-8
         useSSL: false
-        serverTimezone: UTC
+        # 东八区
+        serverTimezone: GMT+8
         allowMultiQueries: true
         autoReconnect: true
 business:

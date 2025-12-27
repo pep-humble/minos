@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * 异常配置
+ *
  * @author liu.gang
  */
 @Data
