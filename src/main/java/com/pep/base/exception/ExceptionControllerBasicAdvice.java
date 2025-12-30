@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.support.WebExchangeBindException;
 import org.springframework.web.server.MethodNotAllowedException;
+import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.Locale;
 
@@ -125,5 +127,31 @@ public class ExceptionControllerBasicAdvice {
             return this.exceptionMapper.handlerException(locale, businessException);
         }
         return this.exceptionMapper.handlerException(locale, exception, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    /**
+     * 处理接口不存在的异常
+     *
+     * @param locale    地区
+     * @param exception 异常信息
+     * @return 处理结果
+     */
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseEntity<ExceptionVo> handlerNoHandlerFoundException(Locale locale, NoHandlerFoundException exception) {
+        log.error(exception.getMessage(), exception);
+        return this.exceptionMapper.handlerException(locale, exception, HttpStatus.NOT_FOUND);
+    }
+
+    /**
+     * 处理资源不存在的异常
+     *
+     * @param locale    地区
+     * @param exception 异常信息
+     * @return 处理结果
+     */
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ExceptionVo> handlerNoHandlerFoundException(Locale locale, NoResourceFoundException exception) {
+        log.error(exception.getMessage(), exception);
+        return this.exceptionMapper.handlerException(locale, exception, HttpStatus.NOT_FOUND);
     }
 }

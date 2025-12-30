@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author liu.gang
  */
 @RestController
-@RequestMapping("/setting")
+@RequestMapping("/system/setting")
 @RequiredArgsConstructor
 @Tag(name = "系统设置-设置项管理")
 public class SettingController {
@@ -49,7 +49,7 @@ public class SettingController {
     @GetMapping("/{key}")
     @Operation(summary = "根据唯一名称匹配系统设置项")
     @Parameter(name = "key", description = "设置项唯一名称", in = ParameterIn.PATH)
-    public SettingVo createSetting(@PathVariable String key) {
+    public SettingVo first(@PathVariable String key) {
         return settingService.first(key);
     }
 }

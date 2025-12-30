@@ -24,4 +24,5 @@ public class SpringMvcConfiguration implements WebMvcConfigurer {
             converters.add(0, new FastJsonHttpMessageConverter());
         }
     }
+
 }
