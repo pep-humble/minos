@@ -42,28 +42,34 @@ public class MapCollector<T, K, U> implements Collector<T, Map<K, U>, Map<K, U>>
      * 值映射器
      */
     private Function<T, U> valueMapper;
+
     /**
      * 初始大小
      */
     private int initialCapacity = 16;
+
     /**
      * 加载因子
      */
     private float loadFactor = 0.8F;
+
     /**
      * 构造器
      */
     private NonnullBiFunction<Integer, Float, Map<K, U>> constructor = HashMap::new;
+
     /**
      * 生产者
      */
     private Supplier<Map<K, U>> supplier = () -> this.constructor.apply(this.initialCapacity, this.loadFactor);
+
     /**
      * 合并方法
      */
     private BinaryOperator<U> mergeFunction = (u, v) -> {
         throw new IllegalStateException(String.format("Duplicate key %s", u));
     };
+
     /**
      * 合并器
      */
@@ -73,10 +79,12 @@ public class MapCollector<T, K, U> implements Collector<T, Map<K, U>, Map<K, U>>
         }
         return map1;
     };
+
     /**
      * 叠加器
      */
     private BiConsumer<Map<K, U>, T> accumulator = (map, element) -> map.merge(this.keyMapper.apply(element), this.valueMapper.apply(element), this.mergeFunction);
+
     /**
      * 最终处理器
      */

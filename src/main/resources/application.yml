@@ -2,11 +2,27 @@ server:
   port: 8881
   servlet:
     context-path: /minos
+    session:
+      timeout: 2H
 spring:
   main:
     banner-mode: off
   application:
     name: minos
+  session:
+    redis:
+      namespace: spring:session
+  data:
+    redis:
+      database: 0
+      host: localhost
+      port: 6379
+      password: '!@Wasd135139'
+      lettuce:
+        pool:
+          enabled: true
+          max-idle: 8
+          min-idle: 8
   datasource:
     url: jdbc:mysql://localhost:3306
     hikari:
@@ -30,14 +46,25 @@ spring:
         # 东八区
         serverTimezone: GMT+8
         allowMultiQueries: true
+        # 自动重连
         autoReconnect: true
 business:
+  tree:
+    menu:
+      length: 4
+      digits: 0123456789abcdefghijklmnopqrstuvwxyz
+      maximum-depth: 10
   exception:
     response-real-exceptions: true
+  security:
+    permit-all:
+      - path: /v3/api-docs/**
+      - path: /system/setting/**
 logging:
   level:
     com.pep: debug
     root: info
+    org.springframework.transaction: DEBUG
 # springdoc-openapi项目配置
 springdoc:
   group-configs:
@@ -45,7 +72,7 @@ springdoc:
       display-name: '默认分组'
       paths-to-match: '/**'
       packages-to-scan: com.pep.minos
-# knife4j的增强配置，不需要增强可以不配
+# knife4j的增强配置, 不需要增强可以不配
 knife4j:
   enable: true
   setting:
@@ -53,4 +80,4 @@ knife4j:
     enable-open-api: on
     enable-footer: false
     enable-footer-custom: true
-    footer-custom-content: 'Copyright © 2025-2026 Minos. All Rights Reserved.'
+    footer-custom-content: 'Copyright © 2026-2027 Minos. All Rights Reserved.'

@@ -1,7 +1,7 @@
 package com.pep.minos.system.form.setting;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -20,14 +20,14 @@ public class SettingCreateForm {
     /**
      * 设置项唯一名称
      */
-    @NotEmpty
+    @NotBlank
     @Schema(name = "key", description = "设置项唯一名称")
     private String key;
 
     /**
      * 设置项描述
      */
-    @NotEmpty
+    @NotBlank
     @Schema(description = "设置项描述")
     private String desc;
 

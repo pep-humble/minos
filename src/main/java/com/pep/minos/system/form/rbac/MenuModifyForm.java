@@ -1,4 +1,4 @@
-package com.pep.minos.system.form.setting;
+package com.pep.minos.system.form.rbac;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -8,22 +8,22 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
- * 系统设置项创建表单
+ * 菜单编辑表单
  *
  * @author liu.gang
  */
 @Data
 @Accessors(chain = true)
+@Schema(name = "MenuModifyForm 菜单编辑表单", description = "菜单编辑表单")
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@Schema(name = "SettingModifyForm 系统设置项创建表单", description = "系统设置项创建表单")
-public class SettingModifyForm extends SettingCreateForm {
+public class MenuModifyForm extends MenuCreateForm {
 
     /**
-     * 设置项唯一编码
+     * 节点编号
      */
     @NotBlank
-    @Schema(name = "id", description = "设置项唯一编码")
+    @Schema(description = "节点编号")
     private String id;
 
 }
